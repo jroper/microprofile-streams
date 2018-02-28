@@ -36,7 +36,7 @@ While the API will be based on the JDK9 Flow API, this is an integration SPI. An
 
 ## Use case design
 
-!images/system-diagram.png!
+![System Diagram](images/system-diagram.png)
 
 This diagram shows both the initial use case, and an intended future use case to be implemented. In this first iteration, only the first use case will be implemented.
 
