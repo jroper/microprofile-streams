@@ -63,12 +63,19 @@ To run the use case, you'll need the following:
 
 1. Kafka installed and running on port 9092 (along with Zookeeper).
 2. Cassandra installed and running on port 9042, with the following keyspace/table created:
+
         create keyspace streaming with replication = {'class':'SimpleStrategy', 'replication_factor':1};
         create table streaming.user_details (id uuid primary key, name text, email text);
+
 3. Run the example by executing the following:
+
         mvn clean install
         mvn -pl microprofile-streams-example exec:java -Dexec.mainClass="org.eclipse.microprofile.streams.example.Main"
+
 4. Test by using kafkacat to put a message on the queue:
+
         echo '{"type": "CREATED", "id": "6b46e75c-2e1e-4a91-b7a0-ff785c305a81", "name": "John Smith", "email": "john@example.com"}' | kafkacat -P -b localhost:9092 -t user-details.events
+
 5. Check that messages are being correctly handled by checking the cassandra table:
+
         select * from streaming.user_details;
